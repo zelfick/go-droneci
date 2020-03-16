@@ -56,14 +56,4 @@ steps:
   - build
   - smtp
 
-services:
-- name: smtp
-  image: catatnight/postfix
-  environment:
-    ports: 25
-    maildomain: cloud.drone.io
-    smtp_user: user:pwd
-    messageSizeLimit: 40960000
-    mailboxSizeLimit: 40960000
-
 
