@@ -50,9 +50,10 @@ steps:
     skip_verify: true
     from: pipeline@cloud.drone.io
     recipients: [jorgeherran@hotmail.com, jorgeandresherran@gmail.com]
-    when:
-      status: [changed, failure, success]  
-
+  when:
+    status: [changed, failure, success]  
+  depends_on:
+    - smtp
 
 
 
