@@ -7,7 +7,6 @@ steps:
   commands:
   - go get -v -t -d ./...
   - go build
-  - go test -v ./...
 
 - name: testing
   image: golang
@@ -15,7 +14,7 @@ steps:
   - go get -v -t -d ./...
   - go test -v ./...
 
-services:
+#services:
 - name: publish
   image: plugins/docker
   settings:
