@@ -12,6 +12,23 @@ services:
     messageSizeLimit: 40960000
     mailboxSizeLimit: 40960000
 
+- name: notify
+  image: drillster/drone-email
+  settings: 
+    host: smtp
+    username: user
+    password: pwd
+    port: 25
+    skip_verify: true
+    from: pipeline@cloud.drone.io
+    recipients: [jorgeherran@hotmail.com, jorgeandresherran@gmail.com]
+    when:
+      status: [changed, failure, success]  
+  depends_on:
+  - build
+  - test
+  - smtp
+
 steps:
 - name: build
   image: golang
@@ -40,20 +57,6 @@ steps:
     branch:
     - master
 
-- name: notify
-  image: drillster/drone-email
-  settings: 
-    host: smtp
-    username: user
-    password: pwd
-    port: 25
-    skip_verify: true
-    from: pipeline@cloud.drone.io
-    recipients: [jorgeherran@hotmail.com, jorgeandresherran@gmail.com]
-    when:
-      status: [changed, failure, success]  
-  depends_on:
-  - build
-  - smtp
+
 
 
