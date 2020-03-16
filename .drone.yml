@@ -53,6 +53,7 @@ steps:
   when:
     status: [changed, failure, success]  
   depends_on:
+    - build
     - smtp
 
 
