@@ -47,14 +47,12 @@ steps:
     username: user
     password: pwd
     port: 25
-    skip_verify: false
+    skip_verify: true
     from: pipeline@cloud.drone.io
     recipients: [jorgeherran@hotmail.com, jorgeandresherran@gmail.com]
     when:
       status: [changed, failure, success]  
   depends_on:
-  - build
-  - test
   - smtp
 
 
