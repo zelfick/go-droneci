@@ -29,6 +29,17 @@ steps:
     branch:
     - master
 
+services:
+
+- name: smtp
+  image: catatnight/postfix
+  environment:
+    ports: 25
+    maildomain: cloud.drone.io
+    smtp_user: user:pwd
+    messageSizeLimit: 40960000
+    mailboxSizeLimit: 40960000
+
 - name: notify
   image: drillster/drone-email
   settings: 
@@ -41,15 +52,3 @@ steps:
     recipients: [jorgeherran@hotmail.com, jorgeandresherran@gmail.com]
     when:
       status: [ changed, failure ]
-
-services:
-
-- name: smtp
-  image: catatnight/postfix
-  environment:
-    ports: 25
-    maildomain: cloud.drone.io
-    smtp_user: user:pwd
-    messageSizeLimit: 40960000
-    mailboxSizeLimit: 40960000
-
