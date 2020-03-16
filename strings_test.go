@@ -7,7 +7,7 @@ import (
 
 func TestReverseEmptyString(t *testing.T) {
 	s := ""
-	e := "3"
+	e := ""
 	r := Flip(s)
 	assert.Equal(t, e, r)
 }
@@ -21,21 +21,21 @@ func TestReverseSingleCharString(t *testing.T) {
 
 func TestReverseTwoCharString(t *testing.T) {
 	s := "ab"
-	e := "aba"
+	e := "ab"
 	r := Flip(s)
 	assert.Equal(t, e, r)
 }
 
 func TestReverseRepeatedCharsString(t *testing.T) {
 	s := "aaa"
-	e := "aaz"
+	e := "aaa"
 	r := Flip(s)
 	assert.Equal(t, e, r)
 }
 
 func TestReverseLongerString(t *testing.T) {
 	s := "longer and complex words"
-	e := "3sdrow xelpmoc dna regnol"
+	e := "sdrow xelpmoc dna regnol"
 	r := Flip(s)
 	assert.Equal(t, e, r)
 }
