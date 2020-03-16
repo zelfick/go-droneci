@@ -14,7 +14,6 @@ steps:
   - go get -v -t -d ./...
   - go test -v ./...
 
-#services:
 - name: publish
   image: plugins/docker
   settings:
@@ -30,19 +29,6 @@ steps:
     branch:
     - master
 
-- name: notify
-  image: drillster/drone-email
-  settings: 
-    host: smtp
-    username: user
-    password: pwd
-    port: 25
-    skip_verify: true
-    from: pipeline@cloud.drone.io
-    recipients: [jorge.herran@endava.com]
-    when:
-      status: [ changed, success ]
-
 services:
 
 - name: smtp
@@ -53,3 +39,18 @@ services:
     smtp_user: user:pwd
     messageSizeLimit: 40960000
     mailboxSizeLimit: 40960000
+
+notify:
+  image: drillster/drone-email
+  settings: 
+    host: smtp
+    username: user
+    password: pwd
+    port: 25
+    skip_verify: true
+    from: pipeline@cloud.drone.io
+    recipients: [jorgeherran@hotmail.com, jorge.herran@endava.com]
+    when:
+      status: [ changed, success, failure ]
+
+
