@@ -21,7 +21,7 @@ func TestReverseSingleCharString(t *testing.T) {
 
 func TestReverseTwoCharString(t *testing.T) {
 	s := "ab"
-	e := "ab"
+	e := "ba"
 	r := Flip(s)
 	assert.Equal(t, e, r)
 }
