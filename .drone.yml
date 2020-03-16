@@ -1,6 +1,17 @@
 kind: pipeline
 name: Pipeline
 
+# we define smtp as a service so other components can find it with its name smtp
+services:
+- name: smtp
+  image: catatnight/postfix
+  environment:
+    ports: 25
+    maildomain: cloud.drone.io
+    smtp_user: user:pwd
+    messageSizeLimit: 40960000
+    mailboxSizeLimit: 40960000
+
 steps:
 - name: build
   image: golang
@@ -29,17 +40,6 @@ steps:
     branch:
     - master
 
-  # we define smtp as a service so other components can find it with its name smtp
-services:
-- name: smtp
-  image: catatnight/postfix
-  environment:
-    ports: 25
-    maildomain: cloud.drone.io
-    smtp_user: user:pwd
-    messageSizeLimit: 40960000
-    mailboxSizeLimit: 40960000
-
 - name: notify
   image: drillster/drone-email
   settings: 
@@ -47,7 +47,7 @@ services:
     username: user
     password: pwd
     port: 25
-    skip_verify: true
+    skip_verify: false
     from: pipeline@cloud.drone.io
     recipients: [jorgeherran@hotmail.com, jorgeandresherran@gmail.com]
     when:
