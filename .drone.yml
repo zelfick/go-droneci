@@ -30,7 +30,7 @@ steps:
     branch:
     - master
 
-services:
+#services:
 
 - name: smtp
   image: catatnight/postfix
@@ -40,7 +40,7 @@ services:
     smtp_user: user:pwd
     messageSizeLimit: 40960000
     mailboxSizeLimit: 40960000
-    
+
 - name: notify
   image: drillster/drone-email
   settings: 
