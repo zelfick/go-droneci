@@ -9,7 +9,7 @@ steps:
   - go build
   - go test -v ./...
 
-- name: test
+- name: testing
   image: golang
   commands:
   - go get -v -t -d ./...
