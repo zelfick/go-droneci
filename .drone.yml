@@ -44,8 +44,6 @@ steps:
       - success
       - failure  
   depends_on:
-  - build
-  - testing
   - smtp
 
 services:
